@@ -1,0 +1,59 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap" rel="stylesheet">
+    <title>Frontend Mentor | Calculator App</title>
+</head>
+<body>
+    <main class="calculator">
+        <header class="calculator__header">
+            <h1 class="calculator__title">calc</h1>
+            <div class="theme-toggle">
+                <span class="theme-toggle__label">THEME</span>
+                <div class="theme-toggle__switcher">
+                    <div class="theme-toggle__labels">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                    </div>
+                    <div class="theme-toggle__slider">
+                        <input type="radio" name="theme" id="theme1" value="1" checked>
+                        <label for="theme1" class="theme-toggle__option"></label>
+                        <input type="radio" name="theme" id="theme2" value="2">
+                        <label for="theme2" class="theme-toggle__option"></label>
+                        <input type="radio" name="theme" id="theme3" value="3">
+                        <label for="theme3" class="theme-toggle__option"></label>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="calculator__display" role="textbox" aria-live="polite">0</div>
+        <div class="calculator__keypad">
+            <button class="key key--number">7</button>
+            <button class="key key--number">8</button>
+            <button class="key key--number">9</button>
+            <button class="key key--action key--del">DEL</button>
+            <button class="key key--number">4</button>
+            <button class="key key--number">5</button>
+            <button class="key key--number">6</button>
+            <button class="key key--operator">+</button>
+            <button class="key key--number">1</button>
+            <button class="key key--number">2</button>
+            <button class="key key--number">3</button>
+            <button class="key key--operator">-</button>
+            <button class="key key--number">.</button>
+            <button class="key key--number">0</button>
+            <button class="key key--operator">/</button>
+            <button class="key key--operator">x</button>
+            <button class="key key--action key--reset">RESET</button>
+            <button class="key key--equals">=</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+/* Reset */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Root Variables for Themes */
+:root {
+    /* Theme 1 (Default) */
+    --main-bg: hsl(222, 26%, 31%);
+    --keypad-bg: hsl(223, 31%, 20%);
+    --screen-bg: hsl(224, 36%, 15%);
+    --key-bg: hsl(30, 25%, 89%);
+    --key-shadow: hsl(28, 16%, 65%);
+    --key-action-bg: hsl(225, 21%, 49%);
+    --key-action-shadow: hsl(224, 28%, 35%);
+    --key-equals-bg: hsl(6, 63%, 50%);
+    --key-equals-shadow: hsl(6, 70%, 34%);
+    --text-color: hsl(221, 14%, 31%);
+    --text-white: hsl(0, 0%, 100%);
+    --display-text: hsl(0, 0%, 100%);
+}
+
+[data-theme="2"] {
+    /* Theme 2 */
+    --main-bg: hsl(0, 0%, 90%);
+    --keypad-bg: hsl(0, 5%, 81%);
+    --screen-bg: hsl(0, 0%, 93%);
+    --key-bg: hsl(45, 7%, 89%);
+    --key-shadow: hsl(35, 11%, 61%);
+    --key-action-bg: hsl(185, 42%, 37%);
+    --key-action-shadow: hsl(185, 58%, 25%);
+    --key-equals-bg: hsl(25, 98%, 40%);
+    --key-equals-shadow: hsl(25, 99%, 27%);
+    --text-color: hsl(60, 10%, 19%);
+    --text-white: hsl(0, 0%, 100%);
+    --display-text: hsl(60, 10%, 19%);
+}
+
+[data-theme="3"] {
+    /* Theme 3 */
+    --main-bg: hsl(268, 75%, 9%);
+    --keypad-bg: hsl(268, 71%, 12%);
+    --screen-bg: hsl(268, 71%, 12%);
+    --key-bg: hsl(268, 47%, 21%);
+    --key-shadow: hsl(290, 70%, 36%);
+    --key-action-bg: hsl(281, 89%, 26%);
+    --key-action-shadow: hsl(285, 91%, 52%);
+    --key-equals-bg: hsl(176, 100%, 44%);
+    --key-equals-shadow: hsl(177, 92%, 70%);
+    --text-color: hsl(52, 100%, 62%);
+    --text-white: hsl(0, 0%, 100%);
+    --display-text: hsl(52, 100%, 62%);
+}
+
+/* General Styles */
+body {
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 700;
+    background-color: var(--main-bg);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* Calculator Layout */
+.calculator {
+    width: 100%;
+    max-width: 375px;
+    margin: 0 auto;
+}
+
+@media (min-width: 1440px) {
+    .calculator {
+        max-width: 540px;
+    }
+}
+
+.calculator__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.calculator__title {
+    color: var(--text-white);
+    font-size: 2rem;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.theme-toggle__label {
+    color: var(--text-white);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+.theme-toggle__switcher {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.theme-toggle__labels {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    color: var(--text-white);
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.theme-toggle__slider {
+    display: flex;
+    background-color: var(--keypad-bg);
+    border-radius: 1rem;
+    padding: 0.25rem;
+    width: 4.5rem;
+    justify-content: space-between;
+}
+
+.theme-toggle__option {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+input[name="theme"] {
+    display: none;
+}
+
+input[name="theme"]:checked + .theme-toggle__option {
+    background-color: var(--key-equals-bg);
+}
+
+/* Display */
+.calculator__display {
+    background-color: var(--screen-bg);
+    color: var(--display-text);
+    font-size: 2rem;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@media (min-width: 1440px) {
+    .calculator__display {
+        font-size: 2.5rem;
+        padding: 2rem;
+    }
+}
+
+/* Keypad */
+.calculator__keypad {
+    background-color: var(--keypad-bg);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+@media (min-width: 1440px) {
+    .calculator__keypad {
+        padding: 2rem;
+        gap: 1.5rem;
+    }
+}
+
+.key {
+    background-color: var(--key-bg);
+    box-shadow: 0 4px 0 var(--key-shadow);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    font-size: 1.75rem;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.key:hover {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--key-shadow);
+}
+
+.key--action {
+    background-color: var(--key-action-bg);
+    box-shadow: 0 4px 0 var(--key-action-shadow);
+    color: var(--text-white);
+    font-size: 1rem;
+}
+
+.key--action:hover {
+    box-shadow: 0 2px 0 var(--key-action-shadow);
+}
+
+.key--equals {
+    background-color: var(--key-equals-bg);
+    box-shadow: 0 4px 0 var(--key-equals-shadow);
+    color: var(--text-white);
+    grid-column: span 2;
+}
+
+.key--equals:hover {
+    box-shadow: 0 2px 0 var(--key-equals-shadow);
+}
+
+.key--reset {
+    grid-column: span 2;
+    font-size: 1rem;
+}
+
+/* Adjust font size for smaller keys */
+.key--operator,
+.key--number {
+    font-size: 1.75rem;
+}
